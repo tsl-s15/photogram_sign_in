@@ -2,4 +2,6 @@
 <img src="<%= @photo.source %>" alt="<%= @photo.caption %>">
 <p><%= @photo.caption %></p>
 
-<p><%= @photo.source %></p>
+
+<a href="/delete_photo/<%= @photo.id %>">Delete</a> |
+<a href="/photos/<%= @photo.id %>/edit">Edit</a>
