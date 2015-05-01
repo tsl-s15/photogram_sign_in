@@ -1,6 +1,7 @@
 <h1>Photo #<%= @photo.id %></h1>
-<img src="<%= @photo.source %>" alt="<%= @photo.caption %>">
-<p><%= @photo.caption %></p>
+<img src="<%= @photo.source %>" alt="<%= @photo.caption %>" width="300">
+<p>Caption:<%= @photo.caption %></p>
+<p>User: <%= @user.name %></p>
 
 <%= link_to "Delete", photo_url(@photo.id), :method => :delete  %> |
 <!-- <a href="/delete_photo/<%#= @photo.id %>">Delete</a>  -->
