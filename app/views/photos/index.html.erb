@@ -13,6 +13,7 @@
             <%= image_tag photo.source, :class => "img-responsive" %>
            <!--  <img src="<%#= photo.source %>" alt="<%#= photo.caption %>" class="img-responsive"> -->
              <h3><%= photo.caption %></h3>
+             <h4><%= photo.user.name %></h4>
              <div>
               <%= link_to photo_url(photo.id), :class => "btn btn-primary" do   %>
                 <i class="fa fa-search-plus"></i>
