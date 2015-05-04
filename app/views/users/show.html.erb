@@ -20,6 +20,12 @@
               <dd><%= @user.image_url %></dd>
 
             </dl>
+            <ul>
+              <% @photos.each do |photo| %>
+                <li><%= photo.caption %></li>
+              <% end %>
+            </ul>
+
             <div class="btn-group btn-group-justified">
               <%= link_to users_url, :class => "btn btn-primary" do %>
                 <i class="fa fa-chevron-left"></i>
