@@ -18,10 +18,16 @@
           </div>
         </div>
 
+        <!-- Transform this input from a text field to a dropdown using an HTML select tag -->
         <div class="form-group">
-          <label for="caption" class="col-sm-2 control-label">user id</label>
+          <label for="user_id" class="col-sm-2 control-label">user id</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="user_id" name="user_id" placeholder="user id" value="<%= @photo.user_id %>">
+          <%= select_tag "user_id", options_from_collection_for_select(@users, "id", "name", "#{@photo.user_id}") %>
+<!--             <select name="user_id" id="user_id">
+              <%# @users.each do |user| %>
+                <option value="<%#= user.id %>"><%#= user.name %></option>
+              <%# end %>
+            </select> -->
           </div>
         </div>
 

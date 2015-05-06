@@ -9,6 +9,7 @@ class PhotosController < ApplicationController
 
   def new
     @photo = Photo.new
+    @users = User.all
   end
 
   def create
@@ -33,6 +34,7 @@ end
 
   def edit
     @photo = Photo.find(params[:id])
+    @users = User.all
   end
 
   def update
