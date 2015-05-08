@@ -7,6 +7,10 @@ class Photo < ActiveRecord::Base
     return User.find(self.user_id)
   end
 
+  def comments
+    return Comment.where(:photo_id => self.id)
+  end
+
 
   def big_caption
     uppercase = self.caption.upcase
