@@ -12,17 +12,23 @@ user_info = [
   {
     name: "Brianna Woods",
     email: "brianna.woods19@example.com",
-    image_url: "https://randomuser.me/api/portraits/med/women/69.jpg"
+    image_url: "https://randomuser.me/api/portraits/med/women/69.jpg",
+    password: "12341234",
+    password_confirmation: "12341234"
   },
   {
     name: "Randy Baker",
     email: "randy.baker89@example.com",
-    image_url: "https://randomuser.me/api/portraits/med/men/28.jpg"
+    image_url: "https://randomuser.me/api/portraits/med/men/28.jpg",
+    password: "12341234",
+    password_confirmation: "12341234"
   },
   {
     name: "Isaac Gonzalez",
     email: "isaac.gonzalez65@example.com",
-    image_url: "https://randomuser.me/api/portraits/med/men/10.jpg"
+    image_url: "https://randomuser.me/api/portraits/med/men/10.jpg",
+    password: "12341234",
+    password_confirmation: "12341234"
   }
 ]
 
@@ -74,15 +80,16 @@ end
 puts "There are now #{Photo.count} photos in the database."
 
 
-# 20.times do
-#   c = Comment.new
-#   rand_num = rand(User.count)
-#   c.user_id = User.offset(rand_num).first.id
-#   rand_num = rand(Photo.count)
-#   c.photo_id = Photo.offset(rand_num).first.id
-#   c.contents = Faker::Hacker.say_something_smart
-#   c.save
-# end
+Comment.destroy_all
+20.times do
+  c = Comment.new
+  rand_num = rand(User.count)
+  c.user_id = User.offset(rand_num).first.id
+  rand_num = rand(Photo.count)
+  c.photo_id = Photo.offset(rand_num).first.id
+  c.contents = Faker::Hacker.say_something_smart
+  c.save
+end
 
 
 
