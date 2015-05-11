@@ -24,7 +24,13 @@
             <div class="panel-body">
               <%= image_tag photo.source, :class => "img-responsive" %>
              <!--  <img src="<%#= photo.source %>" alt="<%#= photo.caption %>" class="img-responsive"> -->
-               <h3><%= photo.caption %></h3>
+               <h3>
+                <%= photo.caption %>
+                <% favorite = Favorite.where(:photo_id => photo.id, :user_id => current_user.id).first %>
+                <% if favorite %>
+                  <small>favorite</small>
+                <% end %>
+               </h3>
                <div>
                 <%= link_to photo_url(photo.id), :class => "btn btn-primary" do   %>
                   <i class="fa fa-search-plus"></i>
@@ -32,10 +38,14 @@
                  <!-- <a class ="btn btn-primary" href="/photos/<%= photo.id %>">
                   <i class="fa fa-search-plus"></i>
                   </a> -->
-
-                <%= link_to "#", :class => "btn btn-success" do %>
-                  <i class="fa fa-heart-o"></i>
+                <% if user_signed_in? %>
+                  <%= form_tag 'favorites', :class => 'inline-form' do %>
+                    <input type="hidden" name="photo_id" value="<%= photo.id %>">
+                    <input type="hidden" name="user_id" value="<%= current_user.id %>">
+                    <button class="btn btn-success"><i class="fa fa-heart-o"></i></button>
+                  <% end %>
                 <% end %>
+
 
                 <%= link_to edit_photo_url(photo.id), :class => "btn btn-warning" do   %>
                   <i class="fa fa-pencil-square-o"></i>
