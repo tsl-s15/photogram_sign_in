@@ -1,4 +1,13 @@
 class FavoritesController < ApplicationController
+  before_action :check_if_admin, :except => [:create, :destroy]
+
+  def check_if_admin
+    unless current_user.admin
+      redirect_to photos_url, :notice => "You might be an admin to do that!"
+    end
+  end
+
+
   def index
     @favorites = Favorite.all
   end

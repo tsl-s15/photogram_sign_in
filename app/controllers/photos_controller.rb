@@ -1,12 +1,9 @@
 class PhotosController < ApplicationController
-  before_action :check_if_owner, :only => [:edit, :update, :destroy]
-# Figure out a way to make sure users can't submit forms with blank data
+  before_action :check_if_owner_or_admin, :only => [:edit, :update, :destroy]
 
-
-
-  def check_if_owner
+  def check_if_owner_or_admin
     photo = Photo.find(params[:id])
-    unless photo.user_id == current_user.id
+    unless (photo.user_id == current_user.id) || current_user.admin
       redirect_to photos_url, :notice => "You might be the photo's owner to do that!"
     end
   end

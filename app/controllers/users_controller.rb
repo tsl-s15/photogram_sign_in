@@ -1,4 +1,13 @@
 class UsersController < ApplicationController
+  before_action :check_if_owner_or_admin, :only => [:edit, :update, :destroy]
+
+  def check_if_owner_or_admin
+    user = User.find(params[:id])
+    unless (user.id == current_user.id) || current_user.admin
+      redirect_to photos_url, :notice => "You might be the user to do that!"
+    end
+  end
+
   def index
     @users = User.all
   end
